@@ -39,8 +39,7 @@ public class SecurityConfiguration{
                 .authorizeRequests()
                 .requestMatchers(HttpMethod.POST, "/user/register").permitAll()
                 .requestMatchers("/", "/login").permitAll()
-                //.requestMatchers(HttpMethod.GET, "/playlists/*", "/playlists", "/songs").permitAll()
-                //.anyRequest().authenticated()
+                .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationConfiguration.getAuthenticationManager()))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
